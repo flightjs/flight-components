@@ -2,24 +2,14 @@ define(function (require) {
 
   'use strict';
 
-  /**
-   * Module dependencies
-   */
-
-  // var myComponent = require('component/my_component');
-
-  /**
-   * Module exports
-   */
+   var dataFlightComponents = require('component/data_flight_components');
+   var uiFlightComponents = require('component/ui_flight_components');
 
   return initialize;
 
-  /**
-   * Module function
-   */
-
   function initialize() {
-    // myComponent.attachTo(document);
+     dataFlightComponents.attachTo('#components');
+     uiFlightComponents.attachTo('#components');
   }
 
 });
