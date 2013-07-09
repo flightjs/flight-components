@@ -4,6 +4,7 @@ requirejs.config({
   baseUrl: '',
   paths: {
     'flight': 'bower_components/flight',
+    'mustache': 'bower_components/mustache',
     'component': 'js/component',
     'page': 'js/page'
   }
