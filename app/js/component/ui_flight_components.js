@@ -12,18 +12,31 @@ define(function (require) {
     });
 
     this.htmlFor = function (component) {
-      return Mustache.render("<tr><td><a href='{{website}}'>{{name}}</a></td> <td>{{owner}}</td> <td>{{forks}}</td> <td>{{stars}}</td> </tr>", component);
+      return Mustache.render("<tr class='component'><td class='name'><a href='{{website}}'>{{name}}</a></td> <td>{{owner}}</td> <td>{{forks}}</td> <td>{{stars}}</td> </tr>", component);
     }
 
     this.updateList = function (ev, data) {
       data.components.forEach(function(component) {
         this.$node.append(this.htmlFor(component));
       }.bind(this));
+      this.trigger("UIFlightComponentsReady");
+    };
+
+    this.filterList = function (ev, data) {
+      this.$node.find('.component').each(function () {
+        var name = $(this).find('.name').text();
+        if (name.match(data.matchRegex)) {
+          $(this).fadeIn();
+        } else {
+          $(this).fadeOut();
+        }
+      });
     };
 
     this.after('initialize', function () {
       this.trigger("UINeedsFlightComponents");
       this.on("DataFlightComponentsServed", this.updateList);
+      this.on(document, "UIFilterFlightComponents", this.filterList);
     });
   }
 
