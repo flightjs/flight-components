@@ -1,4 +1,6 @@
-# flight-components
+# Flight-components
+
+The easiest way to discover [Flight](http://flightjs.github.io) components.
 
 ## Contributing to this project
 
