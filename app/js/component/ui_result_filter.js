@@ -13,7 +13,7 @@ define(function (require) {
 
     this.filter = function (ev) {
       var text = $(ev.target).val();
-      this.trigger("UIFilterFlightComponents", { matchRegex: new RegExp(text, 'i') });
+      this.trigger("ui-filter-flight-components", { matchRegex: new RegExp(text, 'i') });
     };
 
     this.after('initialize', function () {

@@ -36,7 +36,7 @@ define(function (require) {
     this.after('initialize', function () {
       this.trigger("needs-flight-components");
       this.on("flight-components-served", this.updateList);
-      this.on(document, "UIFilterFlightComponents", this.filterList);
+      this.on(document, "ui-filter-flight-components", this.filterList);
     });
   }
 
