@@ -2,7 +2,7 @@ define(function (require) {
 
   'use strict';
 
-   var dataFlightComponents = require('component/data_flight_components');
+   var flightComponents = require('bower_components/flight-components/lib/flight-components');
    var uiFlightComponents = require('component/ui_flight_components');
    var uiResultFilter = require('component/ui_result_filter');
 
@@ -12,7 +12,7 @@ define(function (require) {
      uiResultFilter.attachTo("#filter", {
        resultSelector: '#components'
      });
-     dataFlightComponents.attachTo('#components');
+     flightComponents.attachTo('#components');
      uiFlightComponents.attachTo('#components');
   }
 

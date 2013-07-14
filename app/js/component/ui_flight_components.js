@@ -34,8 +34,8 @@ define(function (require) {
     };
 
     this.after('initialize', function () {
-      this.trigger("UINeedsFlightComponents");
-      this.on("DataFlightComponentsServed", this.updateList);
+      this.trigger("needs-flight-components");
+      this.on("flight-components-served", this.updateList);
       this.on(document, "UIFilterFlightComponents", this.filterList);
     });
   }
