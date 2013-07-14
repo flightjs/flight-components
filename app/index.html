@@ -8,26 +8,29 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="/css/main.css">
   </head>
-  <body>
+  <body data-twttr-rendered='true'>
 
     <div class='container'>
-      <div class='row'>
+      <div class="site-header" role="banner">
+        <img src="img/flight-logo.png" width="150" height="150" alt="Twitter logo">
+        <h1 class="site-title">Flight</h1>
+        <hr>
+        <h2 class="site-tagline">Discover Flight components</h2>
 
-        <div class='span10'>
-          <h1> Flight Components </h1>
-          <input type='text' id='filter' class='center' placeholder='Search for flight components' />
-          <table id="components" class="table table-hover">
-            <thead>
-              <tr>
-                <th> Name </th>
-                <th> Owner </th>
-                <th> Forks </th>
-                <th> Stars </th>
-              </tr>
-            </thead>
-          </table>
-        </div>
+      </div>
 
+      <div class='components-wrapper'>
+        <input type='text' id='filter' class='input-large search-query' placeholder='Search for Flight components' />
+        <table id="components" class="table table-hover">
+          <thead>
+            <tr>
+              <th> Name </th>
+              <th> Owner </th>
+              <th> Forks </th>
+              <th> Stars </th>
+            </tr>
+          </thead>
+        </table>
       </div>
     </div>
 
@@ -42,8 +45,8 @@
     <script>
       var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
       (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
+        g.src='//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
   </body>
 </html>
