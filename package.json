@@ -9,6 +9,11 @@
     "karma": "~0.8.5"
   },
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "start": "node app.js"
+  },
+  "subdomain": "flight-components",
+  "engines": {
+    "node": "0.8.x"
   }
 }
