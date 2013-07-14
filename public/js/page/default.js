@@ -10,10 +10,15 @@ define(function (require) {
 
   function initialize() {
     $('#filter').focus();
+
+    flightComponents.attachTo('#components', {
+      except: ['flight-jasmine', 'flight-mocha']
+    });
+
     uiResultFilter.attachTo("#filter", {
       resultSelector: '#components'
     });
-    flightComponents.attachTo('#components');
+
     uiFlightComponents.attachTo('#components');
   }
 
