@@ -12,7 +12,14 @@ define(function (require) {
     });
 
     this.htmlFor = function (component) {
-      return Mustache.render("<tr class='component'><td class='name'><a href='{{website}}'>{{name}}</a></td> <td>{{owner}}</td> <td>{{forks}}</td> <td>{{stars}}</td> </tr>", component);
+      return Mustache.render(
+        "<tr class='component'>" +
+          "<td class='name'><a href='{{website}}'>{{name}}</a></td>" +
+          "<td>{{description}}</td>" +
+          "<td>{{owner}}</td>" +
+          "<td>{{forks}}</td>" +
+          "<td>{{stars}}</td>" +
+        "</tr>", component);
     }
 
     this.updateList = function (ev, data) {
