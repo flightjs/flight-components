@@ -23,7 +23,9 @@ define(function (require) {
   return initialize;
 
   function initialize() {
-    flightComponents.attachTo('#selector');
+    flightComponents.attachTo('#selector', {
+      except: ['flight-mocha', 'flight-jasmine'] // Manually exclude components
+    });
   };
 });
 

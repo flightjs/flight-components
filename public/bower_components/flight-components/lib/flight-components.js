@@ -9,13 +9,18 @@ define(function (require) {
   function dataFlightComponents() {
     this.defaultAttrs({
       url: 'http://bower-component-list.herokuapp.com/',
-      matchRegex: /^flight-/
+      matchRegex: /^flight-/,
+      except: []
     });
 
     this.filterComponents = function (components, regex) {
       return components.filter(function (component) {
-        return component.name.match(regex);
-      });
+        return component.name.match(regex) && this.notInExceptions(component.name)
+      }.bind(this));
+    }
+
+    this.notInExceptions = function (name) {
+      return $.inArray(name, this.attr.except) == -1;
     }
 
     this.errorCallback = function (data) {
