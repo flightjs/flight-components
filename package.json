@@ -1,5 +1,5 @@
 {
-  "name": "components",
+  "name": "components-staging",
   "version": "0.0.0-2",
   "dependencies": {
     "express": "3.x",
@@ -13,7 +13,7 @@
     "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
     "start": "app.js"
   },
-  "subdomain": "flight-components",
+  "subdomain": "flight-components-staging",
   "engines": {
     "node": "0.8.x"
   }
