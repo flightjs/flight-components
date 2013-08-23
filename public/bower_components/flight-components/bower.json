@@ -17,14 +17,5 @@
     "test",
     "package.json",
     "karma.conf.js"
-  ],
-  "gitHead": "6f42f5fb33a462407c558cba56bef1277aadc243",
-  "readme": "# flight-components\n\n[![Build Status](https://secure.travis-ci.org/rogeliog/flight-components.png)](http://travis-ci.org/rogeliog/flight-components)\n\nA [Flight](https://github.com/flightjs/flight) component to get a list of all the registered Flight components\n\n## Installation\n\n```bash\nbower install --save flight-components\n```\n\n## Example\n\n### Attach it to an element\n\n```javascript\n\ndefine(function (require) {\n\n  var flightComponents = require('flight-components/lib/flight-components');\n\n  return initialize;\n\n  function initialize() {\n    flightComponents.attachTo('#selector', {\n      except: ['flight-mocha', 'flight-jasmine'] // Manually exclude components\n    });\n  };\n});\n\n```\n\n### Interact with it\n\n```javascript\ndefine(function (require) {\n\n  var defineComponent = require('flight/lib/component');\n\n  return defineComponent(myComponent);\n\n  function myComponent() {\n    .\n    .\n\n    this.handleError = function(ev, data) {\n      console.log('ERROR');\n    };\n\n    this.displayComponents = function(ev, data) {\n      //data is an array of components\n    };\n\n    this.after('initialize', function () {\n      this.trigger('needs-flight-components');\n\n      this.on('flight-components-served', this.displayComponents);\n\n      this.on('flight-components-error', this.handleError);\n    });\n  };\n});\n```\n\nEach component has the following properties: name, description, owner, website, forks, stars, created and updated.\n\n## Development\n\nDevelopment of this component requires [Bower](http://bower.io), and preferably\n[Karma](http://karma-runner.github.io) to be globally installed:\n\n```bash\nnpm install -g bower karma\n```\n\nThen install the Node.js and client-side dependencies by running the following\ncommands in the repo's root directory.\n\n```bash\nnpm install\nbower install\n```\n\nTo continuously run the tests in Chrome and Firefox during development, just run:\n\n```bash\nkarma start\n```\n\n## Contributing to this project\n\nAnyone and everyone is welcome to contribute. Please take a moment to\nreview the [guidelines for contributing](CONTRIBUTING.md).\n\n* [Bug reports](CONTRIBUTING.md#bugs)\n* [Feature requests](CONTRIBUTING.md#features)\n* [Pull requests](CONTRIBUTING.md#pull-requests)\n",
-  "readmeFilename": "README.md",
-  "_id": "flight-components@0.1.1",
-  "description": "[![Build Status](https://secure.travis-ci.org/rogeliog/flight-components.png)](http://travis-ci.org/rogeliog/flight-components)",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/rogeliog/flight-components.git"
-  }
+  ]
 }
