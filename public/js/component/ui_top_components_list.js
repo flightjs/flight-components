@@ -34,8 +34,8 @@ define(function (require) {
     this.htmlFor = function (component) {
       component.stat = component[this.attr.compare];
       return Mustache.render(
-          "<li><a href='{{website}}'>{{name}}</a>" +
-          "<span class='stat'>{{stat}}</span></li>"
+          "<li><a href='{{website}}'>{{name}}" +
+          "<span class='stat'>{{stat}}</span></a></li>"
           , component);
     };
 
