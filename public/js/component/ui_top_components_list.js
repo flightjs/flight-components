@@ -11,17 +11,14 @@ define(function (require) {
   function uiTopComponentsList() {
     this.defaultAttrs({
       compare: '',
-      decreasingOrder: true,
+      compareFunction: function (compare) { return compare; },
+      displayFunction: function (stat) { return stat; },
       maxItems: 5
     });
 
     this.orderComponents = function (components, decreasingOrder) {
       return _.sortBy(components, function (component) {
-        if (decreasingOrder) {
-          return -1 * component[this.attr.compare];
-        } else {
-          return component[this.attr.compare];
-        }
+        return -1 * this.attr.compareFunction(component[this.attr.compare]);
       }.bind(this));
     };
 
@@ -31,14 +28,14 @@ define(function (require) {
       this.trigger('top-components-served', { components: orderedComponents });
     };
 
+
     this.htmlFor = function (component) {
-      component.stat = component[this.attr.compare];
+      component.stat = this.attr.displayFunction(component[this.attr.compare]);
       return Mustache.render(
           "<li><a href='{{website}}'>{{name}}" +
           "<span class='stat'>{{stat}}</span></a></li>"
           , component);
     };
-
     this.displayTopList = function (ev, data) {
       data.components.forEach(function (component) {
         this.$node.append(this.htmlFor(component));
