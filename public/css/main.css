@@ -1,7 +1,3 @@
-
-@import "bootstrap.css";
-@import "bootstrap-responsive.css";
-
 /**
  * Flight Project Page
  */
@@ -162,10 +158,6 @@ pre code {
   box-shadow: inset 0 2px 3px 0 rgba(0, 0, 0, 0.2);
 }
 
-.components-wrapper {
-  text-align: center;
-}
-
 #components {
   margin-top:10px;
 }
@@ -182,9 +174,11 @@ pre code {
 .top-list li{
   padding: 5px;
 }
+
 .top-list span{
   float:right;
 }
+
 .top-list .header {
   font-size: 16px;
 }
