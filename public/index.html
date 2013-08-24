@@ -6,8 +6,10 @@
     <meta name="description" content="Discover Flight components">
     <title>Discover Flight components</title>
     <meta name="description" content="A lightweight, component-based JavaScript framework for assigning behavior to DOM nodes.">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="shortcut icon" type="image/x-icon" href="http://twitter.com/favicons/favicon.ico">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body data-twttr-rendered='true'>
@@ -16,10 +18,10 @@
 
       <div class="site-header" role="banner">
         <div class="row">
-          <div class="span1">
+          <div class="col-lg-1">
             <img src="img/flight-logo.png" width="75" height="75" alt="Twitter logo">
           </div>
-          <div class="span2">
+          <div class="col-lg-2">
             <h1 class="site-title">Flight</h1>
           </div>
           <div class="pull-right">
@@ -29,8 +31,22 @@
         <hr/>
       </div>
 
-      <div class='components-wrapper'>
-        <input type='text' id='filter' class='input-large search-query' placeholder='Search for Flight components' />
+      <div class="row">
+        <ul id='top-forks' class='top-list col-lg-4 nav nav-pills nav-stacked'>
+          <li class='header'>Most forked</li>
+        </ul>
+        <ul id='top-stars' class='top-list col-lg-4 nav nav-pills nav-stacked'>
+          <li class='header'>Most starred</li>
+        </ul>
+        <ul id='recently-created' class='top-list col-lg-4 nav nav-pills nav-stacked'>
+          <li class='header'>Recently created</li>
+        </ul>
+      </div>
+
+      <div class="main-section row">
+        <div class="col-lg-4 col-lg-offset-4">
+          <input type='text' id='filter' class='form-control input-md' placeholder='Search for Flight components' />
+        </div>
         <table id="components" class="table table-hover">
           <thead>
             <tr>
