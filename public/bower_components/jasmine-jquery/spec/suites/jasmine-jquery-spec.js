@@ -229,15 +229,16 @@ describe("jasmine.Fixtures", function() {
       expect(fixturesContainer().html()).toEqual(jasmine.JQuery.browserTagCaseIndependentHtml(html))
     })
 
-    it("should have shortcut global method setFixtures", function() {
-      setFixtures(html)
-      expect(fixturesContainer().html()).toEqual(jasmine.JQuery.browserTagCaseIndependentHtml(html))
-    })
-
     describe("when fixture container does not exist", function() {
       it("should automatically create fixtures container and append it to DOM", function() {
         jasmine.getFixtures().set(html)
         expect(fixturesContainer().size()).toEqual(1)
+      })
+
+      it("should return the fixture container", function() {
+        var container = jasmine.getFixtures().set(html)
+        expect(container).toExist()
+        expect(container[0]).toEqual(fixturesContainer()[0])
       })
     })
 
@@ -250,8 +251,29 @@ describe("jasmine.Fixtures", function() {
         jasmine.getFixtures().set(html)
         expect(fixturesContainer().html()).toEqual(jasmine.JQuery.browserTagCaseIndependentHtml(html))
       })
+
+      it("should return the fixture container", function(){
+        var container = jasmine.getFixtures().set(html)
+        expect(container).toExist()
+        expect(container[0]).toEqual(fixturesContainer()[0])
+      })
     })
   })
+
+  describe("setFixtures", function() {
+    var html = '<div>some HTML</div>'
+
+    it("should be a shortcut global method", function() {
+      setFixtures(html)
+      expect(fixturesContainer().html()).toEqual(jasmine.JQuery.browserTagCaseIndependentHtml(html))
+    })
+
+    it("should return the fixture container", function() {
+      var container = setFixtures(html)
+      expect(container).toExist()
+      expect(container[0]).toEqual(fixturesContainer()[0])
+    })
+  });
 
   describe("appendSet",function(){
     var html = '<div>some HTML</div>'
@@ -434,12 +456,12 @@ describe("jQuery matchers", function() {
       expect($('#sandbox').get(0)).not.toHaveClass(className)
     })
 
-	it("should not crash when documentElement provided", function(){
-	  var doc = $(document.documentElement).addClass(className)
-	  expect(doc).toHaveClass(className)
-	  doc.removeClass(className)
-	  expect(doc).not.toHaveClass(className)
-	})
+    it("should not crash when documentElement provided", function(){
+      var doc = $(document.documentElement).addClass(className)
+      expect(doc).toHaveClass(className)
+      doc.removeClass(className)
+      expect(doc).not.toHaveClass(className)
+    })
   })
 
   describe("toHaveAttr", function() {
@@ -907,6 +929,20 @@ describe("jQuery matchers", function() {
     })
   })
 
+  describe("toBeMatchedBy", function() {
+    beforeEach(function() {
+      setFixtures(sandbox().html('<span id="js-match"></span>'))
+    })
+
+    it("should pass if selector contains given selector", function() {
+      expect($('#sandbox span')).toBeMatchedBy('#js-match');
+    })
+
+    it("should pass negated if selector does not contain given selector", function() {
+      expect($('#sandbox span')).not.toBeMatchedBy('#js-match-not');
+    })
+  })
+
   describe("toBeDisabled", function() {
     beforeEach(function() {
       setFixtures('\
@@ -1297,6 +1333,40 @@ describe("jQuery matchers", function() {
       $(object).bind('click', handler)
       expect($(object)).toHandleWith('click', handler)
     })
+
+    it("should pass if the namespaced event is bound with the given handler", function() {
+      var handler = function(){ }; // noop
+      $('#clickme').bind("click.namespaced", handler)
+      expect($('#clickme')).toHandleWith("click.namespaced", handler)
+      expect($('#clickme').get(0)).toHandleWith("click.namespaced", handler)
+    })
+
+    it('should pass if the namespaced event is not bound with the given handler', function() {
+      var handler = function(){ }
+      $('#clickme').bind("click", handler)
+
+      var aDifferentHandler = function(){ }
+      expect($('#clickme')).not.toHandleWith("click.namespaced", aDifferentHandler)
+      expect($('#clickme').get(0)).not.toHandleWith("click.namespaced", aDifferentHandler)
+    })
+
+    it('should pass if the namespaced event is not bound at all', function() {
+      expect($('#clickme')).not.toHandle("click.namespaced")
+      expect($('#clickme').get(0)).not.toHandle("click.namespaced")
+    })
+
+    it("should pass if the namespaced event on window is bound with the given handler", function(){
+      var handler = function(){ }
+      $(window).bind("resize.namespaced", handler)
+      expect($(window)).toHandleWith("resize.namespaced", handler)
+    })
+
+    it("should pass if the namespaced event on any object is bound with the given handler", function(){
+      var object = new function(){ }; // noop
+      var handler = function(){ }
+      $(object).bind('click.namespaced', handler)
+      expect($(object)).toHandleWith('click.namespaced', handler)
+    })
   })
 })
 
@@ -1619,4 +1689,41 @@ describe("jasmine.JSONFixtures using real AJAX call", function() {
   })
 })
 
+describe("jasmine.Env.equalityTesters_", function() {
+  describe("jQuery object tester", function() {
+    beforeEach(function() {
+      setFixtures(sandbox())
+    })
 
+    it("should equate the same element with different selectors", function() {
+      expect($('#sandbox')).toEqual($('div#sandbox'))
+    })
+
+    it("should equate jquery objects that match a set of elements", function() {
+      $('#sandbox').append($('<div></div>'))
+      $('#sandbox').append($('<div></div>'))
+      expect($('#sandbox div')).toEqual($('div#sandbox div'))
+    })
+
+    it("should not equate jquery objects that match a set of elements where one has an extra", function() {
+      $('#sandbox').append($('<div></div>'))
+      $('#sandbox').append($('<div></div>'))
+      $('#sandbox').append($('<span></span>'))
+      expect($('#sandbox div')).not.toEqual($('div#sandbox div, div#sandbox span'))
+    })
+
+    it("should not equate jquery objects that match a set of elements of the same type where the tag types are the same, but they are not the same DOM elements", function() {
+      $('#sandbox').append($('<div class="one"></div>'))
+      $('#sandbox').append($('<span class="one"></span>'))
+      $('#sandbox').append($('<div class="two"></div>'))
+      $('#sandbox').append($('<span class="two"></span>'))
+      expect($('.one')).not.toEqual($('.two').first())
+    })
+
+    it("should not equate jquery objects that match a set of elements of the same type where one is missing a single element", function() {
+      $('#sandbox').append($('<div></div>'))
+      $('#sandbox').append($('<div></div>'))
+      expect($('#sandbox div')).not.toEqual($('div#sandbox div').first())
+    })
+  })
+})
