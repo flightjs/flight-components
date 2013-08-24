@@ -5,6 +5,7 @@ requirejs.config({
   paths: {
     'flight': 'bower_components/flight',
     'mustache': 'bower_components/mustache',
+    'underscore': 'bower_components/underscore-amd/underscore',
     'component': 'js/component',
     'page': 'js/page'
   }

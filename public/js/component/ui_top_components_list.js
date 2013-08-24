@@ -3,7 +3,7 @@ define(function (require) {
   'use strict';
 
   var defineComponent = require('flight/lib/component');
-  var underscore = require('bower_components/underscore-amd/underscore');
+  var underscore = require('underscore');
   var Mustache = require('mustache/mustache');
 
   return defineComponent(uiTopComponentsList);
