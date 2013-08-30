@@ -26,8 +26,6 @@ define(function (require) {
       this.on('loader-show-main', this.showMain);
       this.on('loader-show-loader', this.showLoader);
       this.on("flight-components-served", this.showMain);
-
-      this.showLoader();
     });
   }
 
