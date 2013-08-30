@@ -59,3 +59,9 @@
   margin-bottom:10px;
 }
 
+.loader {
+  text-align: center;
+  padding-bottom: 60px;
+  color: #666;
+  font-size: 2em;
+}

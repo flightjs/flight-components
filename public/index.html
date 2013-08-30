@@ -31,33 +31,39 @@
         <hr/>
       </div>
 
-      <div class="row">
-        <ul id='top-forks' class='top-list col-lg-4 nav nav-pills nav-stacked'>
-          <li class='header'>Most forked</li>
-        </ul>
-        <ul id='top-stars' class='top-list col-lg-4 nav nav-pills nav-stacked'>
-          <li class='header'>Most starred</li>
-        </ul>
-        <ul id='recently-created' class='top-list col-lg-4 nav nav-pills nav-stacked'>
-          <li class='header'>Recently created</li>
-        </ul>
+      <div class='loader'>
+        Loading Flight components...
       </div>
 
-      <div class="main-section row">
-        <div class="col-lg-4 col-lg-offset-4">
-          <input type='text' id='filter' class='form-control input-md' placeholder='Search for Flight components' />
+      <div class='components-wrapper'>
+        <div class="row">
+          <ul id='top-forks' class='top-list col-lg-4 nav nav-pills nav-stacked'>
+            <li class='header'>Most forked</li>
+          </ul>
+          <ul id='top-stars' class='top-list col-lg-4 nav nav-pills nav-stacked'>
+            <li class='header'>Most starred</li>
+          </ul>
+          <ul id='recently-created' class='top-list col-lg-4 nav nav-pills nav-stacked'>
+            <li class='header'>Recently created</li>
+          </ul>
         </div>
-        <table id="components" class="table table-hover">
-          <thead>
-            <tr>
-              <th> Name </th>
-              <th> Description </th>
-              <th> Owner </th>
-              <th> Forks </th>
-              <th> Stars </th>
-            </tr>
-          </thead>
-        </table>
+
+        <div class="main-section row">
+          <div class="col-lg-4 col-lg-offset-4">
+            <input type='text' id='filter' class='form-control input-md' placeholder='Search for Flight components' />
+          </div>
+          <table id="components" class="table table-hover">
+            <thead>
+              <tr>
+                <th> Name </th>
+                <th> Description </th>
+                <th> Owner </th>
+                <th> Forks </th>
+                <th> Stars </th>
+              </tr>
+            </thead>
+          </table>
+        </div>
       </div>
 
       <div id='footer'>

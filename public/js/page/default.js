@@ -8,12 +8,16 @@ define(function (require) {
   var uiFlightComponents = require('component/ui_flight_components');
   var uiResultFilter = require('component/ui_result_filter');
   var uiTopComponentsList = require('component/ui_top_components_list');
-
+  var loaderSwitcher = require('component/loader_switcher');
 
   return initialize;
 
   function initialize() {
     $('#filter').focus();
+
+    loaderSwitcher.attachTo(document, {
+      mainSelector: '.components-wrapper'
+    });
 
     flightComponents.attachTo('#components', {
       except: ['flight-jasmine', 'flight-mocha']
