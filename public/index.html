@@ -18,14 +18,12 @@
 
       <div class="site-header" role="banner">
         <div class="row">
-          <div class="col-lg-1">
+          <div class="col-sm-6">
             <img src="img/flight-logo.png" width="75" height="75" alt="Twitter logo">
-          </div>
-          <div class="col-lg-2">
             <h1 class="site-title">Flight</h1>
           </div>
-          <div class="pull-right">
-            <h2 class="site-tagline">Discover <a href='http://flightjs.github.io/'>Flight</a> components.</h2>
+          <div class="col-sm-6">
+            <h2 class="site-tagline text-right">Discover <a href='http://flightjs.github.io/'>Flight</a> components.</h2>
           </div>
         </div>
         <hr/>
@@ -37,37 +35,48 @@
 
       <div class='components-wrapper'>
         <div class="row">
-          <ul id='top-forks' class='top-list col-lg-4 nav nav-pills nav-stacked'>
-            <li class='header'>Most forked</li>
-          </ul>
-          <ul id='top-stars' class='top-list col-lg-4 nav nav-pills nav-stacked'>
-            <li class='header'>Most starred</li>
-          </ul>
-          <ul id='recently-created' class='top-list col-lg-4 nav nav-pills nav-stacked'>
-            <li class='header'>Recently created</li>
-          </ul>
+          <div class="col-md-4">
+            <div id='top-forks' class='top-list list-group active'>
+              <div class='list-group-item header'>Most forked</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <ul id='top-stars' class='top-list list-group active'>
+              <li class='list-group-item header'>Most starred</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <ul id='recently-created' class='top-list list-group active'>
+              <li class='list-group-item header'>Recently created</li>
+            </ul>
+          </div>
         </div>
 
-        <div class="main-section row">
-          <div class="col-lg-4 col-lg-offset-4">
-            <input type='text' id='filter' class='form-control input-md' placeholder='Search for Flight components' />
+        <div class="main-section">
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4 form-group">
+              <input type='text' id='filter' class='form-control input-md' placeholder='Search for Flight components' />
+            </div>
           </div>
-          <table id="components" class="table table-hover">
-            <thead>
-              <tr>
-                <th> Name </th>
-                <th> Description </th>
-                <th> Owner </th>
-                <th> Forks </th>
-                <th> Stars </th>
-              </tr>
-            </thead>
-          </table>
+
+          <div class="u-overflowRegion">
+            <table id="components" class="table table-hover">
+              <thead>
+                <tr>
+                  <th> Name </th>
+                  <th> Description </th>
+                  <th> Owner </th>
+                  <th> Forks </th>
+                  <th> Stars </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
         </div>
       </div>
 
       <div id='footer'>
-        This list is automatically generated from the <a href='http://sindresorhus.com/bower-components/'>Bower</a> components list. Components must be prefixed with <strong>"flight-"</strong> in order to be visible.
+        <p class="text-muted text-center">This list is automatically generated from the <a href='http://sindresorhus.com/bower-components/'>Bower</a> components list. Components must be prefixed with <strong>"flight-"</strong> in order to be visible.</p>
       </div>
     </div>
 
