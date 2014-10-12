@@ -16,10 +16,9 @@
 }
 
 .site-tagline {
-  margin: 0;
+  margin-top: 40px;
   font-size: 1.75em;
   font-weight: normal;
-  line-height: 75px;
 }
 
 .site-main img {

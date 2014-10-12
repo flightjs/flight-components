@@ -23,7 +23,7 @@
             <h1 class="site-title">Flight</h1>
           </div>
           <div class="col-sm-6">
-            <h2 class="site-tagline pull-right">Discover <a href='http://flightjs.github.io/'>Flight</a> components.</h2>
+            <h2 class="site-tagline text-right">Discover <a href='http://flightjs.github.io/'>Flight</a> components.</h2>
           </div>
         </div>
         <hr/>
@@ -36,18 +36,18 @@
       <div class='components-wrapper'>
         <div class="row">
           <div class="col-md-4">
-            <ul id='top-forks' class='top-list nav nav-pills nav-stacked'>
-              <li class='header'>Most forked</li>
+            <div id='top-forks' class='top-list list-group active'>
+              <div class='list-group-item header'>Most forked</div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <ul id='top-stars' class='top-list list-group active'>
+              <li class='list-group-item header'>Most starred</li>
             </ul>
           </div>
           <div class="col-md-4">
-            <ul id='top-stars' class='top-list nav nav-pills nav-stacked'>
-              <li class='header'>Most starred</li>
-            </ul>
-          </div>
-          <div class="col-md-4">
-            <ul id='recently-created' class='top-list nav nav-pills nav-stacked'>
-              <li class='header'>Recently created</li>
+            <ul id='recently-created' class='top-list list-group active'>
+              <li class='list-group-item header'>Recently created</li>
             </ul>
           </div>
         </div>
@@ -76,7 +76,7 @@
       </div>
 
       <div id='footer'>
-        This list is automatically generated from the <a href='http://sindresorhus.com/bower-components/'>Bower</a> components list. Components must be prefixed with <strong>"flight-"</strong> in order to be visible.
+        <p class="text-muted text-center">This list is automatically generated from the <a href='http://sindresorhus.com/bower-components/'>Bower</a> components list. Components must be prefixed with <strong>"flight-"</strong> in order to be visible.</p>
       </div>
     </div>
 

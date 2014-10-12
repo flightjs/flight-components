@@ -30,11 +30,14 @@ define(function (require) {
 
 
     this.htmlFor = function (component) {
+      var template = [
+        '<a class="list-group-item" href="{{website}}">',
+          '<span class="badge">{{stat}}</span>',
+          '{{name}}',
+        '</a>'
+      ].join('\n');
       component.stat = this.attr.displayFunction(component[this.attr.compare]);
-      return Mustache.render(
-          "<li><a href='{{website}}'>{{name}}" +
-          "<span class='stat'>{{stat}}</span></a></li>"
-          , component);
+      return Mustache.render(template, component);
     };
     this.displayTopList = function (ev, data) {
       data.components.forEach(function (component) {
